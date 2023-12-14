@@ -22,11 +22,11 @@ const Index = () => {
       <Route path="/" element={<Home />} />
       <Route path="/courses" element={<AllCourses />} />
       <Route path="/softwareCourses" element={<SoftwareEngineering />} />
-      <Route path="/MobileDevelopmentProgram" element={<WebDevelopmentProgram />} />
+      <Route path="/mobiledevelopment" element={<WebDevelopmentProgram />} />
       <Route path="/partTimeProgram" element={<PartTimeProgram />} />
-      <Route path="/HighschoolBootcamp" element={<HighschoolBootcamp />} />
-      <Route path="/MobileApplication" element={<JanApplication />} />
-      <Route path="/FebruaryIntake" element={<FebApplicationPage />} />
+      <Route path="/highschoolbootcamp" element={<HighschoolBootcamp />} />
+      <Route path="/mobilejanuaryapplication" element={<JanApplication />} />
+      <Route path="/februaryintake" element={<FebApplicationPage />} />
       
       <Route path="/about" element={<About />} />
       <Route path="/program" element={<Application />} />

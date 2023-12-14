@@ -5,16 +5,18 @@ import Footer from "../../components/Footers/footer";
 import "./mobileApp.css"
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from 'react-router-dom';
 
 const WebDev = () => {
   const [show, setShow] = useState(false);
   const [hide, setHide] = useState(false);
   const [visible, setVisible] = useState(false);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
   return (
     <div>
       <Nav />
@@ -25,7 +27,7 @@ const WebDev = () => {
 
           <h1 className='para1'>Mobile Application Development Program</h1>
           <p> Embark on a transformative journey with our 16-week <br></br> program,designed to equip you with essential skills in mobile<br></br> application development.</p>
-          <button className='mob-btn'>Get Started</button>
+          <button onClick={() => navigate('/mobilejanuaryapplication')} className='mob-btn'>Get Started</button>
         </div>
       </div>
       <div className='mobileApp-part2' >
@@ -82,8 +84,6 @@ const WebDev = () => {
                 </p>
               </div>
             ) : null}
-
-
           </ul>
         </div>
       </div>
@@ -96,7 +96,7 @@ const WebDev = () => {
       <div data-aos="fade-left" className='program-highlights-part-two'>
       <p> Dive into a comprehensive 16-week curriculum that hones three key skills: HTML, CSS, and JavaScript. And it's not just only about learning,it's about joining a supportive community committed to propelling you toward success.</p>
       <div>
-      <button className='program-btn'>Apply Now!</button>
+      <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
       </div>
       
       </div>

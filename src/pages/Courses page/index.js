@@ -62,7 +62,7 @@ const Courses = () => {
               Unlock the world of possibilities with our SheCanCode Bootcamp's Mobile Application Development program, designed to empower young girls and women in the exciting realm of technology. In this transformative journey, participants will delve into the art of crafting mobile applications, gaining hands-on experience in coding, design, and problem-solving. Our supportive and inclusive learning environment fosters creativity and collaboration, ensuring that every aspiring tech enthusiast can thrive.
             </p>
             <button>
-              <a href="/MobileDevelopmentProgram" className='card-btn'>Explore Course</a>
+              <a href="/mobiledevelopment" className='card-btn'>Explore Course</a>
             </button>
           </div>
           <div className="card-container">
