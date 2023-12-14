@@ -34,7 +34,7 @@ const JanApplication = () => {
                             <img src={Image} alt="not found"></img>
                         </div>
 
-
+                        {/* Interview steps  */}
 
                         <div className="form">
                             <form onSubmit={formSubmittion}>
