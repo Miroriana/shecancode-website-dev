@@ -61,7 +61,7 @@ let Index = () => {
                   <ul className='subMenu'>
                     <li><a href='/courses'>All Courses</a></li>
                     <li><a href='/softwareCourses'>Software Engineering</a></li>
-                    <li><a href='/MobileDevelopmentProgram'>Mobile Application Development</a></li>
+                    <li><a href='/mobiledevelopment'>Mobile Application Development</a></li>
                     <li><a onClick={togglePop}>Part Time Software Engineering</a></li>
                     {pop &&
                       (<div className='open-pop' >
