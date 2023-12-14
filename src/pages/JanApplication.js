@@ -101,9 +101,11 @@ const JanApplication = () => {
         fetch(URL, { method: 'POST', body: formInputs})
         .then(
             response => {
-                // if (response.statusCode === 200) {}
                 setResponseMessage("Successfully submitted")
                 resetFormInputs();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000)
             }
         )
         .catch(error => {
@@ -126,31 +128,31 @@ const JanApplication = () => {
                     <div className='flex w-full gap-0 sm:gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>First name*</label>
-                            <input type='text' name='firstName' onChange={handleInput} value={formInputs.firstName || ''} placeholder='First name' />
+                            <input type='text' required minLength={4} name='firstName' onChange={handleInput} value={formInputs.firstName || ''} placeholder='First name' />
                             {errors.firstName && <span className='error-message'>{errors.firstName}</span>}
                         </div>
                         <div className='form-input'>
                             <label className=''>Last name*</label>
-                            <input type='text' name='lastName' onChange={handleInput} value={formInputs.lastName || ''} placeholder='Last name' />
+                            <input type='text' required minLength={4} name='lastName' onChange={handleInput} value={formInputs.lastName || ''} placeholder='Last name' />
                             {errors.lastName && <span className='error-message'>{errors.lastName}</span>}
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>Email address*</label>
-                            <input type='email' name='email' onChange={handleInput} value={formInputs.email || ''} placeholder='Email address' />
+                            <input type='email' required minLength={8} name='email' onChange={handleInput} value={formInputs.email || ''} placeholder='Email address' />
                             {errors.email && <span className='error-message'>{errors.email}</span>}
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>Phone number*</label>
-                            <input type='phone' name='phone' onChange={handleInput} value={formInputs.phone || ''} placeholder='Phone number' />
+                            <input type='phone' required minLength={10} maxLength={10} max={10} name='phone' onChange={handleInput} value={formInputs.phone || ''} placeholder='Phone number' />
                             {errors.phone && <span className='error-message'>{errors.phone}</span>}
                         </div>
                         <div className='form-input'>
                             <label className=''>Age*</label>
-                            <input type='number' name='age' onChange={handleInput} value={formInputs.age || ''} placeholder='Age' />
+                            <input type='number' required min={16} name='age' onChange={handleInput} value={formInputs.age || ''} placeholder='Age' />
                             {errors.age && <span className='error-message'>{errors.age}</span>}
                         </div>
                     </div>
@@ -158,7 +160,7 @@ const JanApplication = () => {
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className='text-left'>Current level of education*</label>
-                            <select name='currentLevelOfEducation' onChange={handleInput}>
+                            <select required name='currentLevelOfEducation' onChange={handleInput}>
                                 <option value={""}>Select level of education</option>
                                 <option value={"University graduate"}>University graduate</option>
                                 <option value={"Attending university"}>Attending university</option>
@@ -168,7 +170,7 @@ const JanApplication = () => {
                         </div>
                         <div className='form-input'>
                             <label className='text-left'>What did/do you learn?*</label>
-                            <select name='whatDidYouStudy' onChange={handleInput}>
+                            <select required name='whatDidYouStudy' onChange={handleInput}>
                                 <option value={""}>Choose option</option>
                                 {formInputs.currentLevelOfEducation === "University graduate" && 
                                     UNIVERSITY_COMBINATIONS.map((combination, index) => (
@@ -221,11 +223,15 @@ const JanApplication = () => {
                                 <input type='checkbox' name='techstack' onChange={handleTechStack} value={"React Native"} />
                                 &nbsp;React Native
                             </div>
+                            <div>
+                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"No prior experience"} />
+                                &nbsp;No prior experience
+                            </div>
                             {errors.techstack && <span className='error-message'>{errors.techstack}</span>}
                         </div>
                         <div className='form-input'>
                             <label className='text-left'>GitHub Account</label>
-                            <input type='text' name='gitHubAccount' onChange={handleInput} value={formInputs.gitHubAccount || ''} placeholder='GitHub Account' />
+                            <input type='text' min={4} name='gitHubAccount' onChange={handleInput} value={formInputs.gitHubAccount || ''} placeholder='GitHub Account' />
                             {errors.gitHubAccount && <span className='error-message'>{errors.gitHubAccount}</span>}
                         </div>
                     </div>
@@ -240,21 +246,21 @@ const JanApplication = () => {
                             {errors.email && <span className='error-message'>{errors.email}</span>}
                         </div>
                         <div className='form-input'>
-                            <label className='text-left'>Location/Residence</label>
+                            <label className='text-left'>Current Residence*</label>
                             <small>Provide district and sector</small>
-                            <input type='text' name='residence' onChange={handleInput} value={formInputs.residence || ''} placeholder='Where do you live now?' />
+                            <input type='text' min={5} name='residence' onChange={handleInput} value={formInputs.residence || ''} placeholder='Where do you live now?' />
                             {errors.residence && <span className='error-message'>{errors.residence}</span>}
                         </div>
                     </div>
                     <p className='font-bold mt-6'>3. Your Motivation</p>
                     <div className='form-input'>
                         <label className='text-left'>Why do you wish to join this program*</label>
-                        <textarea name='whyDoYouWishToJoinThisProgram' onChange={handleInput} value={formInputs.whyDoYouWishToJoinThisProgram || ''} placeholder='Your text here' rows={4}></textarea>
+                        <textarea minLength={20} required name='whyDoYouWishToJoinThisProgram' onChange={handleInput} value={formInputs.whyDoYouWishToJoinThisProgram || ''} placeholder='Your text here' rows={4}></textarea>
                         {errors.whyDoYouWishToJoinThisProgram && <span className='error-message'>{errors.whyDoYouWishToJoinThisProgram}</span>}
                     </div>
                     <div className='form-input'>
                         <label className='text-left'>How will this program impact you?*</label>
-                        <textarea name='howWillThisProgramHelpYou' onChange={handleInput} value={formInputs.howWillThisProgramHelpYou || ''} placeholder='Your text here' rows={4}></textarea>
+                        <textarea minLength={20} required name='howWillThisProgramHelpYou' onChange={handleInput} value={formInputs.howWillThisProgramHelpYou || ''} placeholder='Your text here' rows={4}></textarea>
                         {errors.howWillThisProgramHelpYou && <span className='error-message'>{errors.howWillThisProgramHelpYou}</span>}
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
