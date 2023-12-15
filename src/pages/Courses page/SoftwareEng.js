@@ -50,13 +50,6 @@ const FullStack = () => {
           <button onClick={() => navigate('/februaryintake')} className='speci-card-btn mb-5'>Apply Now!</button>
         </div>
       </div>
-
-      
-
-
-
-
-
       <Footer />
     </div>
   )
