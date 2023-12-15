@@ -102,8 +102,8 @@
     background-color: rgb(213, 213, 213);
     padding-left: 30px;
     border-radius: 10px;
-   padding-top: 15px;
-   padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   
 }
 
@@ -118,13 +118,11 @@
 }
 
 .mobileApp-part3-container {
-    
     width: 100%;
-   
 }
 .program-highlights-part{
     width: 100%;
-    height: 20vh;
+    /* height: 20vh; */
     display: flex;
     gap: 50px;
     margin-bottom: 4em;

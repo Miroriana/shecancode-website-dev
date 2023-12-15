@@ -94,15 +94,12 @@ const WebDev = () => {
         </div>
         <div data-aos="fade-left" className='program-highlights-part-two'>
           <p>
-            Dive into a comprehensive 16-week curriculum that hones three key skills:
-             HTML, CSS, and JavaScript. And it's not just only about learning, it's 
-             about joining a supportive community committed to propelling you toward success.</p>
+          Ready to delve into the world of mobile applications? Join our comprehensive training program where you'll master the art of creating stunning mobile apps using React Native!
+          In this course, you'll not only learn React Native but also gain a solid foundation in programming essentials with HTML, CSS, and JavaScript. No prior experience needed, just enthusiasm and a desire to build amazing apps!.</p>
           <div>
-            <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
+            <button className='program-btn mb-9' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
           </div>
-
         </div>
-
       </div>
 
       <Footer />
