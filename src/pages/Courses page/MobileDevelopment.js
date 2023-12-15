@@ -24,18 +24,17 @@ const WebDev = () => {
 
       <div className='mobileApp-parts-container'>
         <div className='mobileApp-part1'>
-
           <h1 className='para1'>Mobile Application Development Program</h1>
           <p> Embark on a transformative journey with our 16-week <br></br> program,designed to equip you with essential skills in mobile<br></br> application development.</p>
           <button onClick={() => navigate('/mobilejanuaryapplication')} className='mob-btn'>Get Started</button>
         </div>
       </div>
-      <div className='mobileApp-part2' >
 
+      <div className='mobileApp-part2' >
         <h1 >Elevate Your Career in Mobile Application Development with SheCanCode</h1>
         <p >Join us on the fast track to success! At SheCanCode, we empower aspiring individuals <br></br>to become leaders in mobile application development. Our programs are designed to work with world-class engineering teams, <br></br>helping you master both professional and technical skills essential for a thriving career.</p>
-
       </div>
+
       <div className='mobileApp-part3-container'>
         <div className='mobileApp-part3-sections'>
           <ul>
@@ -88,21 +87,24 @@ const WebDev = () => {
         </div>
       </div>
       <div className='program-highlights-part'>
-        <div data-aos="fade-right"  className='program-highlights-part-one'>
-      <h1>Program highlights:{" "}
+        <div data-aos="fade-right" className='program-highlights-part-one'>
+          <h1>Program highlights:{" "}
 
-      </h1>
+          </h1>
+        </div>
+        <div data-aos="fade-left" className='program-highlights-part-two'>
+          <p>
+            Dive into a comprehensive 16-week curriculum that hones three key skills:
+             HTML, CSS, and JavaScript. And it's not just only about learning, it's 
+             about joining a supportive community committed to propelling you toward success.</p>
+          <div>
+            <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
+          </div>
+
+        </div>
+
       </div>
-      <div data-aos="fade-left" className='program-highlights-part-two'>
-      <p> Dive into a comprehensive 16-week curriculum that hones three key skills: HTML, CSS, and JavaScript. And it's not just only about learning,it's about joining a supportive community committed to propelling you toward success.</p>
-      <div>
-      <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
-      </div>
-      
-      </div>
-      
-      </div>
-      
+
       <Footer />
     </div>
 
