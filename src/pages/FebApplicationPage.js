@@ -3,6 +3,7 @@ import Nav from "../components/Nav/index";
 import Header from "../components/Header/index";
 import Footer from '../components/Footers/footer';
 import './Courses page/formInputs.css';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 const SECONDARY_COMBINATIONS = [
     "Computer Science (MEC)",
@@ -20,7 +21,6 @@ const UNIVERSITY_COMBINATIONS = [
 ];
 
 const JanApplication = () => {
-
     const [techStack, setTechStack] = useState([]);
     const [formInputs, setFormInputs] = useState({
         firstName: '',
@@ -90,28 +90,66 @@ const JanApplication = () => {
         }
     }
 
+    const {
+        REACT_APP_PRIVATE_KEY,
+        REACT_APP_CLIENT_EMAIL,
+        REACT_APP_SPREADSHEET_ID,
+        REACT_APP_SHEET_ID
+    } = process.env;
+
+    const doc = new GoogleSpreadsheet(REACT_APP_SPREADSHEET_ID);
+
+    const appendSpreadsheet = async (row) => {
+        try {
+            // await doc.auth({
+            //     client_email: REACT_APP_CLIENT_EMAIL,
+            //     private_key:REACT_APP_PRIVATE_KEY,
+            // })
+
+            await doc.useServiceAccountAuth({
+                client_email: REACT_APP_CLIENT_EMAIL,
+                private_key:REACT_APP_PRIVATE_KEY,
+            });
+
+            console.log('Hello 2');
+            
+            await doc.loadInfo();
+
+            console.log(doc.loadInfo());
+
+            const sheet = doc.sheetsById[REACT_APP_SHEET_ID];        
+            const result = await sheet.addRow(row);
+            
+            return result;
+        } catch (e) {
+            console.error("Error: ", e);
+        }
+    };
+
     const formSubmission = (e) => {
         e.preventDefault();
 
         formInputs.techStack = techStack.join(', ');
         console.log(formInputs);
 
-        const URL = 'https://script.google.com/macros/s/AKfycbxP8wxzHpwbsMDkBUzYISMMhygnuz_jXhX_QqI0RwJ2jtsuq3MiwMSIVxratF5FsOaqow/exec';
+        // const URL = 'https://script.google.com/macros/s/AKfycbzdegsAKIapIUTSziSVknMTlTFeg2FzGKWDBZgjKqOENtrgaGoSQLt3ximyGBPMXNQoqg/exec';
 
-        fetch(URL, { method: 'POST', body: formInputs})
-        .then(
-            response => {
-                setResponseMessage("Successfully submitted")
-                resetFormInputs();
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000)
-            }
-        )
-        .catch(error => {
-            setErrors({ submit: 'Failed to submit!'});
-            console.error('Error!', error.message)
-        })
+        appendSpreadsheet(formInputs);
+
+        // fetch(URL, { method: 'POST', body: formInputs})
+        // .then(
+        //     response => {
+        //         setResponseMessage("Successfully submitted")
+        //         resetFormInputs();
+        //         setTimeout(() => {
+        //             window.location.reload();
+        //         }, 1000)
+        //     }
+        // )
+        // .catch(error => {
+        //     setErrors({ submit: 'Failed to submit!'});
+        //     console.error('Error!', error.message)
+        // })
     }
 
     return (
