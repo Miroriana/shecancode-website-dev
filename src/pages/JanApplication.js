@@ -7,6 +7,7 @@ import './Courses page/formInputs.css';
 const SECONDARY_COMBINATIONS = [
     "Computer Science (MEC)",
     "Software Development (SOD)",
+    "Mathematics Physics and Computer Science (MPC)",
     "Others"
 ];
 
