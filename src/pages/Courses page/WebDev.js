@@ -88,21 +88,24 @@ const WebDev = () => {
         </div>
       </div>
       <div className='program-highlights-part'>
-        <div data-aos="fade-right"  className='program-highlights-part-one'>
-      <h1>Program highlights:{" "}
+        <div data-aos="fade-right" className='program-highlights-part-one'>
+          <h1>Program highlights:{" "}
 
-      </h1>
+          </h1>
+        </div>
+        <div data-aos="fade-left" className='program-highlights-part-two'>
+          <p>
+            Dive into a comprehensive 16-week curriculum that hones three key skills:
+             HTML, CSS, and JavaScript. And it's not just only about learning, it's 
+             about joining a supportive community committed to propelling you toward success.</p>
+          <div>
+            <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
+          </div>
+
+        </div>
+
       </div>
-      <div data-aos="fade-left" className='program-highlights-part-two'>
-      <p> Dive into a comprehensive 16-week curriculum that hones three key skills: HTML, CSS, and JavaScript. And it's not just only about learning,it's about joining a supportive community committed to propelling you toward success.</p>
-      <div>
-      <button className='program-btn' onClick={() => navigate('/mobilejanuaryapplication')}>Apply Now!</button>
-      </div>
-      
-      </div>
-      
-      </div>
-      
+
       <Footer />
     </div>
 
