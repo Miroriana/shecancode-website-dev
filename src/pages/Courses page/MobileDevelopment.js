@@ -79,7 +79,8 @@ const WebDev = () => {
                   {" "}
                   This program is specifically designed for young girls and women who are passionate, determined, and creative individuals seeking empowerment in the tech industry.
                   If you have a strong desire to excel in technology, innovate, and make a meaningful impact, this program is tailored to support and nurture your skills and ambitions.
-
+                  <br/><br/>
+                  <strong>N.B:</strong> The applicant should have their own Personal Computer.
                 </p>
               </div>
             ) : null}

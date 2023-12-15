@@ -35,6 +35,7 @@ const JanApplication = () => {
         "What did you study": '',
         "Tech stack": '',
         "GitHub account": '',
+        "Do you have a computer": '',
         "Interview location": '',
         "Why do you wish to join this program": '',
         "How will this program impact you": '',
@@ -51,6 +52,7 @@ const JanApplication = () => {
         whatDidYouStudy: '',
         techstack: '',
         gitHubAccount: '',
+        doYouHaveAComputer: '',
         whyDoYouWishToJoinThisProgram: '',
         howWillThisProgramHelpYou: '',
         interviewLocation: '',
@@ -70,6 +72,7 @@ const JanApplication = () => {
             "What did you study": '',
             "Tech stack": '',
             "GitHub account": '',
+            "Do you have a computer":'',
             "Interview location": '',
             "Why do you wish to join this program": '',
             "How will this program impact you": '',
@@ -100,7 +103,7 @@ const JanApplication = () => {
         formInputs.techStack = techStack.join(', ');
         console.log(formInputs);
 
-        const URL = 'https://script.google.com/macros/s/AKfycbx_R43TSE_6h7TH6RBzH3OdK0rI5eeYaYrTRH1CzSQSOa2pAJ7qOMQHzHfoPJEucJKE/exec';
+        const URL = 'https://script.google.com/macros/s/AKfycbyRYJ3eab-cthia01m-arjx7Fd-NJMzA95e4wPScmH4lg8Ka-JBb9mAXn7rdabyOK6W1A/exec';
 
         setProcessing("Processing...");
 
@@ -251,6 +254,15 @@ const JanApplication = () => {
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
+                        <div className='form-input'>
+                            <label className='text-left'>Do you have a computer?*</label>
+                            <select name='Do you have a computer' onChange={handleInput}>
+                                <option value={""}>Choose option</option>
+                                <option value={"Yes"}>Yes</option>
+                                <option value={"No"}>No</option>
+                            </select>
+                            {errors.doYouHaveAComputer && <span className='error-message'>{errors.doYouHaveAComputer}</span>}
+                        </div>
                         <div className='form-input'>
                             <label className='text-left'>Interview location*</label>
                             <select name='Interview location' onChange={handleInput}>
