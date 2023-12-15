@@ -22,6 +22,7 @@ const UNIVERSITY_COMBINATIONS = [
 const JanApplication = () => {
 
     const [techStack, setTechStack] = useState([]);
+    const [processing, setProcessing] = useState("");
     const [formInputs, setFormInputs] = useState({
         firstName: '',
         lastName: '',
@@ -98,10 +99,13 @@ const JanApplication = () => {
 
         const URL = 'https://script.google.com/macros/s/AKfycbwOOodYigDlWEtXzhU5LHm9gftSxiaz3HMPj3koshNhRWQ5NIlgRtw6VKy0YOzxasJd/exec';
 
+        setProcessing("Processing...");
+
         fetch(URL, { method: 'POST', body: formInputs})
         .then(
             response => {
-                setResponseMessage("Successfully submitted")
+                setProcessing("");
+                setResponseMessage("Successfully submitted");
                 resetFormInputs();
                 setTimeout(() => {
                     window.location.reload();
@@ -110,7 +114,8 @@ const JanApplication = () => {
         )
         .catch(error => {
             setErrors({ submit: 'Failed to submit!'});
-            console.error('Error!', error.message)
+            setProcessing("");
+            console.error('Error!', error.message);
         })
     }
 
@@ -265,7 +270,11 @@ const JanApplication = () => {
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
-                            <input type='submit' value={'Submit Application'} className='bg-cyan-400 mt-4 py-2 px-3 text-white rounded hover:bg-black cursor-pointer'/>
+                            {processing ? 
+                                <input type='submit' value={'Processing...'} className='bg-gray-400 mt-4 py-2 px-3 text-white rounded hover:bg-black cursor-pointer'/> 
+                                : 
+                                <input type='submit' value={'Submit Application'} className='bg-cyan-400 mt-4 py-2 px-3 text-white rounded hover:bg-black cursor-pointer'/>
+                            }
                             {errors.submit && <span className='error-message'>{errors.submit}</span>}
                         </div>
                     </div>
