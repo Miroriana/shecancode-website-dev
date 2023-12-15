@@ -42,18 +42,13 @@ let Index = () => {
           <img src={Image} alt="scc-logo" />
           <ul class="navbar">
             <li>
-              <Link
-                className={location.pathname === "/" ? "active" : ""}
-                to="/"
-              >
+              <Link className={location.pathname === "/" ? "active" : ""} to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link
-                className={location.pathname === "/courses" ? "active" : ""}
-                to="/courses"
-              >Courses
+              <Link className={location.pathname === "/courses" ? "active" : ""} to="/courses">
+                Courses
               </Link>
 
               <ul>
@@ -88,28 +83,20 @@ let Index = () => {
                 </li>
               </ul>
 
-
             </li>
             <li>
-              <Link
-                className={location.pathname === "/about" ? "active" : ""}
-                to="/about"
-              >
+              <Link className={location.pathname === "/about" ? "active" : ""} to="/about">
                 About
                 {/* <i class="bx bx-chevron-down"></i> */}
               </Link>
             </li>
             <li>
-              <Link
-                className={location.pathname === "/service" ? "active" : ""}
-                to="/service"
-              >
+              <Link className={location.pathname === "/service" ? "active" : ""} to="/service">
                 Career Services
               </Link>
             </li>
             <li>
-              <Link
-                className={location.pathname === "/program" ? "active" : ""}
+              <Link className={location.pathname === "/program" ? "active" : ""}
                 to="/program"
               >
                 Program
