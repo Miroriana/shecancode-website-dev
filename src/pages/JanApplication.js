@@ -36,7 +36,7 @@ const JanApplication = () => {
         "GitHub account": '',
         "Interview location": '',
         "Why do you wish to join this program": '',
-        "How will this program help you": '',
+        "How will this program impact you": '',
     });
 
     const [errors, setErrors] = useState({
@@ -71,7 +71,7 @@ const JanApplication = () => {
             "GitHub account": '',
             "Interview location": '',
             "Why do you wish to join this program": '',
-            "How will this program help you": '',
+            "How will this program impact you": '',
         });
     }
 
