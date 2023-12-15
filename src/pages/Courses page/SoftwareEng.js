@@ -24,24 +24,13 @@ const FullStack = () => {
     <div>
       <Nav />
       <Header />
-      <div data-aos="fade-up" className='softwareEng_Section1'>
-        <div className='softwareEng_Section1--div1'>
 
-          <h1>Unlock Your Potential with Our Software Engineering Program<br></br>
-            Transform your passion into a thriving career in software engineering.
-          </h1>
-
+      <div className='mobileApp-parts-container'>
+        <div className='mobileApp-part1'>
+          <h1 className='para1'>Sofware Engineering Program</h1>
+          <p> Embark on a transformative journey with our 16-week <br></br> program,designed to equip you with essential skills in mobile<br></br> application development.</p>
+          <button onClick={() => navigate('/mobilejanuaryapplication')} className='mob-btn'>Get Started</button>
         </div>
-
-        <div className="why-software-engineering">
-          <div className='why-software-engineering-content'>
-            <h1>Why Choose Software Engineering?</h1>
-            <p> In a rapidly evolving digital landscape, software engineering is the key to unlocking endless possibilities. Whether you're fascinated by backend development, frontend web development,  our SheCanCode software Engineering program provides a comprehensive 16-week curriculum designed to equip you with the skills needed to thrive in the tech industry.</p>
-          </div>
-
-        </div>
-
-
       </div>
 
       <div className="program-highlights">

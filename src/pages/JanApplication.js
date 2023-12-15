@@ -96,7 +96,7 @@ const JanApplication = () => {
         formInputs.techStack = techStack.join(', ');
         console.log(formInputs);
 
-        const URL = 'https://script.google.com/macros/s/AKfycbxP8wxzHpwbsMDkBUzYISMMhygnuz_jXhX_QqI0RwJ2jtsuq3MiwMSIVxratF5FsOaqow/exec';
+        const URL = 'https://script.google.com/macros/s/AKfycbwOOodYigDlWEtXzhU5LHm9gftSxiaz3HMPj3koshNhRWQ5NIlgRtw6VKy0YOzxasJd/exec';
 
         fetch(URL, { method: 'POST', body: formInputs})
         .then(
@@ -105,7 +105,7 @@ const JanApplication = () => {
                 resetFormInputs();
                 setTimeout(() => {
                     window.location.reload();
-                }, 1000)
+                }, 3000)
             }
         )
         .catch(error => {

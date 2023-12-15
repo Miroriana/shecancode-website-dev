@@ -24,18 +24,17 @@ const WebDev = () => {
 
       <div className='mobileApp-parts-container'>
         <div className='mobileApp-part1'>
-
           <h1 className='para1'>Mobile Application Development Program</h1>
           <p> Embark on a transformative journey with our 16-week <br></br> program,designed to equip you with essential skills in mobile<br></br> application development.</p>
           <button onClick={() => navigate('/mobilejanuaryapplication')} className='mob-btn'>Get Started</button>
         </div>
       </div>
-      <div className='mobileApp-part2' >
 
+      <div className='mobileApp-part2' >
         <h1 >Elevate Your Career in Mobile Application Development with SheCanCode</h1>
         <p >Join us on the fast track to success! At SheCanCode, we empower aspiring individuals <br></br>to become leaders in mobile application development. Our programs are designed to work with world-class engineering teams, <br></br>helping you master both professional and technical skills essential for a thriving career.</p>
-
       </div>
+
       <div className='mobileApp-part3-container'>
         <div className='mobileApp-part3-sections'>
           <ul>

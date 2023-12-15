@@ -50,7 +50,7 @@ const Courses = () => {
             <h1 className='card-title'>Software Engineering Program</h1>
             <p className='card-description'>Calling all aspiring tech trailblazers! Embark on a transformative journey with our Software Engineering Program, crafted especially for young girls and women eager to dive into the dynamic world of technology.</p>
             <button className='mb-9'>
-              <a href="/softwareCourses" className='card-btn'>Explore Course</a>
+              <a href="/softwareengineering" className='card-btn'>Explore Course</a>
             </button>
           </div>
 
