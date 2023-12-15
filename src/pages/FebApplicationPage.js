@@ -7,6 +7,7 @@ import './Courses page/formInputs.css';
 const SECONDARY_COMBINATIONS = [
     "Computer Science (MEC)",
     "Software Development (SOD)",
+    "Mathematics Physics and Computer Science (MPC)",
     "Others"
 ];
 
@@ -19,23 +20,24 @@ const UNIVERSITY_COMBINATIONS = [
     "Big Data Analysis"
 ];
 
-const JanApplication = () => {
+const FebApplicationPage = () => {
+
     const [techStack, setTechStack] = useState([]);
     const [processing, setProcessing] = useState("");
     const [formInputs, setFormInputs] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        gender: '',
-        age: 0,
-        residence: '',
-        currentLevelOfEducation: '',
-        whatDidYouStudy: '',
-        gitHubAccount: '',
-        whyDoYouWishToJoinThisProgram: '',
-        howWillThisProgramHelpYou: '',
-        interviewLocation: '',
+        "First name": '',
+        "Last name": '',
+        "Email": '',
+        "Phone": '',
+        "Age": 0,
+        "Residence": '',
+        "Current level of education": '',
+        "What did you study": '',
+        "Tech stack": '',
+        "GitHub account": '',
+        "Interview location": '',
+        "Why do you wish to join this program": '',
+        "How will this program impact you": '',
     });
 
     const [errors, setErrors] = useState({
@@ -43,7 +45,6 @@ const JanApplication = () => {
         lastName: '',
         email: '',
         phone: '',
-        gender: '',
         age: '',
         residence: '',
         currentLevelOfEducation: '',
@@ -59,21 +60,21 @@ const JanApplication = () => {
 
     const resetFormInputs = () => {
         setFormInputs({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            gender: '',
-            age: 0,
-            residence: '',
-            currentLevelOfEducation: '',
-            whatDidYouStudy: '',
-            gitHubAccount: '',
-            whyDoYouWishToJoinThisProgram: '',
-            howWillThisProgramHelpYou: '',
-            interviewLocation: '',
+            "First name": '',
+            "Last name": '',
+            "Email": '',
+            "Phone": '',
+            "Age": 0,
+            "Residence": '',
+            "Current level of education": '',
+            "What did you study": '',
+            "Tech stack": '',
+            "GitHub account": '',
+            "Interview location": '',
+            "Why do you wish to join this program": '',
+            "How will this program impact you": '',
         });
-    };
+    }
 
     const handleInput = ({ currentTarget: target }) => {
         setFormInputs({ ...formInputs, [target.name]: target.value })
@@ -93,79 +94,88 @@ const JanApplication = () => {
     const formSubmission = (e) => {
         e.preventDefault();
 
-        formInputs.techStack = techStack.join(', ');
-        // console.log(formInputs);
+        const formEle = document.querySelector("form");
+        const formDatab = new FormData(formEle);
 
-        const URL = 'https://script.google.com/macros/s/AKfycbzdegsAKIapIUTSziSVknMTlTFeg2FzGKWDBZgjKqOENtrgaGoSQLt3ximyGBPMXNQoqg/exec';
+        formInputs.techStack = techStack.join(', ');
+        console.log(formInputs);
+
+        const URL = 'https://script.google.com/macros/s/AKfycbxHh5ymQUdYQsj3S66Sb_dVp0YhtMzNu_Vynp5YBsf-_rl5b0aCG080qsFVHn5CEG9U/exec';
 
         setProcessing("Processing...");
 
-        fetch(URL, { method: 'POST', body: formInputs})
+        fetch(URL, { method: 'POST', body: formDatab})
         .then(
             response => {
+                console.log(response);
                 setProcessing("");
-                setResponseMessage("Successfully submitted")
+                setResponseMessage("Successfully submitted");
                 resetFormInputs();
                 setTimeout(() => {
                     window.location.reload();
-                }, 1000)
+                }, 3000)
             }
         )
         .catch(error => {
             setErrors({ submit: 'Failed to submit!'});
             setProcessing("");
-            console.error('Error!', error.message)
+            console.error('Error!', error.message);
         })
     }
-
+    
     return (
         <div>
             <Nav />
             <Header />
             <div className='w-full flex flex-wrap flex-shrink-0 justify-start align-top bg-slate-500 py-10 px-4 sm:px-24'>
                 <div className='w-full sm:w-1/3 flex flex-col flex-shrink justify-start gap-4 p-5 sm:p-10 bg-blue-900'>
-                    <h1 className='text-white font-black text-left p-0 m-0 text-3xl'>February Software Engineering Program</h1>
+                    <h1 className='text-white font-black text-left p-0 m-0 text-3xl'>Software Engineering February Program</h1>
                     <p className='text-white text-base'>Unlock Your Potential with Our Software Englineering Program.</p>
-                    {/* <strong>No prior experience needed</strong> */}
                 </div>
-                <form onSubmit={formSubmission} className='w-full sm:w-8/12 flex flex-col flex-shrink justify-start align-top bg-white p-4 sm:p-10'>
+                <form onSubmit={formSubmission} className='form w-full sm:w-8/12 flex flex-col flex-shrink justify-start align-top bg-white p-4 sm:p-10'>
                     <p className='font-bold'>1. Enter Your Personal Details</p>
                     <div className='flex w-full gap-0 sm:gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>First name*</label>
-                            <input type='text' required minLength={4} name='firstName' onChange={handleInput} value={formInputs.firstName || ''} placeholder='First name' />
+                            <input type='text' required minLength={4} name='First name' onChange={handleInput} value={formInputs["First name"] || ''} placeholder='First name' />
                             {errors.firstName && <span className='error-message'>{errors.firstName}</span>}
                         </div>
                         <div className='form-input'>
                             <label className=''>Last name*</label>
-                            <input type='text' required minLength={4} name='lastName' onChange={handleInput} value={formInputs.lastName || ''} placeholder='Last name' />
+                            <input type='text' required minLength={4} name='Last name' onChange={handleInput} value={formInputs["Last name"] || ''} placeholder='Last name' />
                             {errors.lastName && <span className='error-message'>{errors.lastName}</span>}
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>Email address*</label>
-                            <input type='email' required minLength={8} name='email' onChange={handleInput} value={formInputs.email || ''} placeholder='Email address' />
+                            <input type='email' required minLength={8} name='Email' onChange={handleInput} value={formInputs.Email || ''} placeholder='Email address' />
                             {errors.email && <span className='error-message'>{errors.email}</span>}
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className=''>Phone number*</label>
-                            <input type='phone' required minLength={10} maxLength={10} max={10} name='phone' onChange={handleInput} value={formInputs.phone || ''} placeholder='Phone number' />
+                            <input type='phone' required minLength={10} maxLength={10} max={10} name='Phone' onChange={handleInput} value={formInputs.Phone || ''} placeholder='Phone number' />
                             {errors.phone && <span className='error-message'>{errors.phone}</span>}
                         </div>
                         <div className='form-input'>
                             <label className=''>Age*</label>
-                            <input type='number' required min={16} name='age' onChange={handleInput} value={formInputs.age || ''} placeholder='Age' />
+                            <input type='number' required min={16} name='Age' onChange={handleInput} value={formInputs.Age || ''} placeholder='Age' />
                             {errors.age && <span className='error-message'>{errors.age}</span>}
                         </div>
+                    </div>
+                    <div className='form-input'>
+                        <label className='text-left'>Current Residence*</label>
+                        <small>Provide district and sector. Example: Gasabo, Kacyiru</small>
+                        <input type='text' min={5} name='Residence' onChange={handleInput} value={formInputs["Residence"] || ''} placeholder='Where do you live now?' />
+                        {errors.residence && <span className='error-message'>{errors.residence}</span>}
                     </div>
                     <p className='font-bold mt-6'>2. Enter Your Coding Experience</p>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className='text-left'>Current level of education*</label>
-                            <select required name='currentLevelOfEducation' onChange={handleInput}>
+                            <select required name='Current level of education' onChange={handleInput}>
                                 <option value={""}>Select level of education</option>
                                 <option value={"University graduate"}>University graduate</option>
                                 <option value={"Attending university"}>Attending university</option>
@@ -175,19 +185,19 @@ const JanApplication = () => {
                         </div>
                         <div className='form-input'>
                             <label className='text-left'>What did/do you learn?*</label>
-                            <select required name='whatDidYouStudy' onChange={handleInput}>
+                            <select required name='What did you study' onChange={handleInput}>
                                 <option value={""}>Choose option</option>
-                                {formInputs.currentLevelOfEducation === "University graduate" && 
+                                {formInputs["Current level of education"] === "University graduate" && 
                                     UNIVERSITY_COMBINATIONS.map((combination, index) => (
                                         <option value={combination} key={index}>{combination}</option>
                                     ))
                                 }
-                                {formInputs.currentLevelOfEducation === "Attending university" && 
+                                {formInputs["Current level of education"] === "Attending university" && 
                                     UNIVERSITY_COMBINATIONS.map((combination, index) => (
                                         <option value={combination} key={index}>{combination}</option>
                                     ))
                                 }
-                                {formInputs.currentLevelOfEducation === "A' Level graduate" && 
+                                {formInputs["Current level of education"] === "A' Level graduate" && 
                                     SECONDARY_COMBINATIONS.map((combination, index) => (
                                         <option value={combination} key={index}>{combination}</option>
                                     ))
@@ -201,73 +211,70 @@ const JanApplication = () => {
                             <label className='text-left'>Prior experience in programming*</label>
                             <small>Choose all that apply</small>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"HTML"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"HTML"} />
                                 &nbsp;HTML
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"CSS"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"CSS"} />
                                 &nbsp;CSS
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"JavaScript"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"JavaScript"} />
                                 &nbsp;JavaScript
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"ReactJS"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"ReactJS"} />
                                 &nbsp;ReactJS
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"Java"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"Java"} />
                                 &nbsp;Java
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"PHP"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"PHP"} />
                                 &nbsp;PHP
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"React Native"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"React Native"} />
                                 &nbsp;React Native
                             </div>
                             <div>
-                                <input type='checkbox' name='techstack' onChange={handleTechStack} value={"No prior experience"} />
+                                <input type='checkbox' name='Tech stack' onChange={handleTechStack} value={"No prior experience"} />
                                 &nbsp;No prior experience
                             </div>
                             {errors.techstack && <span className='error-message'>{errors.techstack}</span>}
                         </div>
                         <div className='form-input'>
                             <label className='text-left'>GitHub Account</label>
-                            <input type='text' min={4} name='gitHubAccount' onChange={handleInput} value={formInputs.gitHubAccount || ''} placeholder='GitHub Account' />
+                            <input type='text' min={4} name='GitHub account' onChange={handleInput} value={formInputs["GitHub account"] || ''} placeholder='GitHub Account' />
                             {errors.gitHubAccount && <span className='error-message'>{errors.gitHubAccount}</span>}
                         </div>
                     </div>
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             <label className='text-left'>Interview location*</label>
-                            <select name='interviewLocation' onChange={handleInput}>
+                            <select name='Interview location' onChange={handleInput}>
                                 <option value={""}>Choose option</option>
                                 <option value={"On site"}>On site</option>
                                 <option value={"On line"}>On line</option>
                             </select>
-                            {errors.email && <span className='error-message'>{errors.email}</span>}
-                        </div>
-                        <div className='form-input'>
-                            <label className='text-left'>Current Residence*</label>
-                            <small>Provide district and sector</small>
-                            <input type='text' min={5} name='residence' onChange={handleInput} value={formInputs.residence || ''} placeholder='Where do you live now?' />
-                            {errors.residence && <span className='error-message'>{errors.residence}</span>}
+                            {errors.interviewLocation && <span className='error-message'>{errors.interviewLocation}</span>}
                         </div>
                     </div>
                     <p className='font-bold mt-6'>3. Your Motivation</p>
                     <div className='form-input'>
                         <label className='text-left'>Why do you wish to join this program*</label>
-                        <textarea minLength={20} required name='whyDoYouWishToJoinThisProgram' onChange={handleInput} value={formInputs.whyDoYouWishToJoinThisProgram || ''} placeholder='Your text here' rows={4}></textarea>
+                        <textarea minLength={20} required name='Why do you wish to join this program' onChange={handleInput} value={formInputs["Why do you wish to join this program"] || ''} placeholder='Your text here' rows={4}></textarea>
                         {errors.whyDoYouWishToJoinThisProgram && <span className='error-message'>{errors.whyDoYouWishToJoinThisProgram}</span>}
                     </div>
                     <div className='form-input'>
                         <label className='text-left'>How will this program impact you?*</label>
-                        <textarea minLength={20} required name='howWillThisProgramHelpYou' onChange={handleInput} value={formInputs.howWillThisProgramHelpYou || ''} placeholder='Your text here' rows={4}></textarea>
+                        <textarea minLength={20} required name='How will this program impact you' onChange={handleInput} value={formInputs["How will this program impact you"] || ''} placeholder='Your text here' rows={4}></textarea>
                         {errors.howWillThisProgramHelpYou && <span className='error-message'>{errors.howWillThisProgramHelpYou}</span>}
                     </div>
+
+
+
                     <div className='flex w-full gap-3 flex-col sm:flex-row'>
                         <div className='form-input'>
                             {processing ? 
@@ -295,4 +302,4 @@ const JanApplication = () => {
     )
 }
 
-export default JanApplication
+export default FebApplicationPage
